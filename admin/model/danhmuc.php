@@ -1,4 +1,8 @@
 <?php
+
+//lay danh sach danh muc tu database
+
+
     function getall_dm(){
         $conn = connectdb();
         $stmt = $conn->prepare("SELECT * FROM category");
@@ -38,5 +42,7 @@
         // use exec because no results are returned
         $conn->exec($sql);
     }
+    
+
    
 ?>

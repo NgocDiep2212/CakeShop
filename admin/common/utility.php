@@ -1,12 +1,11 @@
-
 <?php
 
-function paginarion($number, $page, $addition){
+function paginarion($number, $page, $addition, $act){
     if($number > 1){
         echo'<ul class="pagination">';
     if($page > 1){
         echo ' <li class="page-item">
-        <a class="page-link" href="?page='.($page-1).$addition.'" tabindex="-1">Previous</a>
+        <a class="page-link" href="?act='.$act.'&page='.($page-1).$addition.'" tabindex="-1">Previous</a>
         </li>';
     }
                    
@@ -15,11 +14,11 @@ function paginarion($number, $page, $addition){
     for($i = 0; $i < $number; $i++){
         if(!in_array($i+1, $avaiablePage)){
             if(!$isFirst && $page > 3){
-                echo '<li class="page-item"><a class="page-link" href="?page='.($page-2).$addition.'">...</a></li>';
+                echo '<li class="page-item"><a class="page-link" href="?act='.$act.'&page='.($page-2).$addition.'">...</a></li>';
                 $isFirst = true;
             }
             if(!$isLast && $i >$page){
-                echo '<li class="page-item"><a class="page-link" href="?page='.($page+2).$addition.'">...</a></li>';
+                echo '<li class="page-item"><a class="page-link" href="?act='.$act.'&page='.($page+2).$addition.'">...</a></li>';
                 $isLast = true;
             }
 
@@ -28,13 +27,13 @@ function paginarion($number, $page, $addition){
         if($page == ($i+1)){
             echo '<li class="page-item active"><a class="page-link" href="#">'.($i+1).'</a></li>';
         }else{
-            echo '<li class="page-item"><a class="page-link" href="?page='.($i+1).$addition.'">'.($i+1).'</a></li>';
+            echo '<li class="page-item"><a class="page-link" href="?act='.$act.'&page='.($i+1).$addition.'">'.($i+1).'</a></li>';
         }
     }
 
     if($page < ($number)){
         echo ' <li class="page-item">
-        <a class="page-link" href="?page='.($page+1).$addition.'" tabindex="-1">Next</a>
+        <a class="page-link" href="?act='.$act.'&page='.($page+1).$addition.'" tabindex="-1">Next</a>
         </li>';
     }
 
