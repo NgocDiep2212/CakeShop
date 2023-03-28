@@ -21,7 +21,7 @@
                 <a class="nav-link <?php if($ten == 'sanpham') echo 'active'?>" href="index.php?act=sanpham">Quản Lý Sản Phẩm</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php if($ten == 'user') echo 'active'?>" href="index.php?act=nguoidung">Quản Lý Người Dùng</a>
+                <a class="nav-link <?php if($ten == 'user') echo 'active'?>" href="index.php?act=user">Quản Lý Người Dùng</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link <?php if($ten == 'donhang') echo 'active'?>" href="index.php?act=donhang">Quản Lý Đơn Hàng</a>
