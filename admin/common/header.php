@@ -27,7 +27,7 @@
                 <a class="nav-link <?php if($ten == 'donhang') echo 'active'?>" href="index.php?act=donhang">Quản Lý Đơn Hàng</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php if($ten == 'ttdonhang') echo 'active'?>" href="../ttdonhang/">Quản Lý Tình Trạng Đơn Hàng</a>
+                <a class="nav-link <?php if($ten == 'ttdonhang') echo 'active'?>" href="index.php?act=ttdonhang">Quản Lý Tình Trạng Đơn Hàng</a>
             </li>
             <li class="nav-item">
                     <a class="nav-link" onclick="exituser();" href="#">Thoát</a>
