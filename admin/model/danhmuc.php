@@ -1,10 +1,14 @@
 <?php
+
+//lay danh sach danh muc tu database
+
+
     function getall_dm(){
         $conn = connectdb();
         $stmt = $conn->prepare("SELECT * FROM category");
         $stmt->execute();
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-       $kq = $stmt->fetchAll();
+        $kq = $stmt->fetchAll();
         return $kq;
     }
 
@@ -38,5 +42,7 @@
         // use exec because no results are returned
         $conn->exec($sql);
     }
+    
+
    
 ?>

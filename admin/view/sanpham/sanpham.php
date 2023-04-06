@@ -55,9 +55,46 @@
                     <tbody>
 <?php 
 
-$firstIndex = 0;
-if(isset($kq) && (count($kq) >0)){
-    foreach($kq as $sp){
+$act = 'sanpham';
+$limit = 5;
+$page = 1;
+if(isset($_GET['page'])){
+    $page = $_GET['page'];
+}
+if($page <= 0){
+    $page = 1;
+}
+$firstIndex = ($page-1)*$limit;
+
+$search = '';
+if(isset($_GET['search'])){
+    $search = $_GET['search'];
+}
+//trang can lay san pham. so phan tu tren 1 trang: $limit
+$additional = '';
+
+if(!empty($search)){
+    $additional = 'and title like "%'.$search.'%"';
+}
+
+$conn = connectdb();
+$sql = 'SELECT product.id, product.title, product.price, product.thumbnail, product.id_category, product.created_at, product.updated_at, category.name FROM product left join category on category.id = product.id_category '.$additional.' limit '.$firstIndex.', '.$limit;
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$productList = $stmt->fetchAll();
+
+
+$sql = 'select count(id) as total from product where 1 '.$additional;
+$stmt = $conn->query($sql);
+$countResult = $stmt->fetchColumn();
+
+$number = 0;
+if($countResult != null){
+    $number = ceil($countResult/$limit);
+}
+
+if(isset($productList) && (count($kq) >0)){
+    foreach($productList as $sp){
         echo '
         <tr>
             <td>'.++$firstIndex.'</td>
@@ -79,6 +116,7 @@ if(isset($kq) && (count($kq) >0)){
 ?>
                     </tbody>
                 </table>
+                <?=paginarion($number, $page, '&search='.$search, $act)?>
             </div>
 		</div>
 	</div>

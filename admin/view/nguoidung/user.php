@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Quản Lý Danh Mục</title>
+	<title>Quản Lý Người Dùng</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
@@ -16,17 +15,16 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    
 	<div class="container">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h2 class="text-center">Quản Lý Danh Mục</h2>
+				<h2 class="text-center">Quản Lý Người Dùng</h2>
 			</div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-6">
-                        <a href="index.php?act=addCategory">
-                         <button class="btn btn-success mb-4">Thêm Danh Mục</button>
+                        <a href="index.php?act=adduser">
+                         <button class="btn btn-success mb-4">Thêm Người Dùng</button>
                         </a>
                     </div>
                     <div class="col-lg-6">
@@ -43,7 +41,13 @@
                     <thead>
                         <tr>
                             <th width="50px">STT</th>
-                            <th>Tên Danh Mục</th>
+                            <th>Tên Tài Khoản</th>
+                            <th>Tên Người Dùng</th>
+                            <th>Địa Chỉ</th>
+                            <th>Số Điện Thoại</th>
+                            <th>Email</th>
+                            <th>Mật Khẩu</th>
+                            <th>Vai Trò</th>
                             <th width="50px"></th>
                             <th width="50px"></th>
                         </tr>
@@ -51,9 +55,7 @@
                     <tbody>
 <?php 
 
-if(isset($kq) && (count($kq) >0)){
-    
-$act = 'danhmuc';
+$act = 'user';
 $limit = 5;
 $page = 1;
 if(isset($_GET['page'])){
@@ -76,13 +78,13 @@ if(!empty($search)){
 }
 
 $conn = connectdb();
-$sql = 'select * from category where 1 '.$additional.' limit '.$firstIndex.', '.$limit;
+$sql = 'select * from user where 1 '.$additional.' limit '.$firstIndex.', '.$limit;
 $stmt = $conn->prepare($sql);
 $stmt->execute();
-$categoryList = $stmt->fetchAll();
+$userList = $stmt->fetchAll();
 
 
-$sql = 'select count(id) as total from category where 1 '.$additional;
+$sql = 'select count(id) as total from user where 1 '.$additional;
 $stmt = $conn->query($sql);
 $countResult = $stmt->fetchColumn();
 
@@ -90,29 +92,57 @@ $number = 0;
 if($countResult != null){
     $number = ceil($countResult/$limit);
 }
-
-    foreach($categoryList as $dm){
+foreach ($userList as $item){
+    if($item['role'] == '0'){
         echo '
-        <tr>
-            <td>'.(++$firstIndex).'</td>
-            <td>'.$dm['name'].'</td>
-            <td>
-                <a href="index.php?act=updateCategory&id='.$dm['id'].'"><button class="btn btn-warning">Sửa</button></a>
-            </td>
-            <td>
-                <a href="index.php?act=deleteCategory&id='.$dm['id'].'"><button class="btn btn-danger">Xóa</button></a>
-            </td>
-        </tr>';
+            <tr>
+                <td>'.(++$firstIndex).'</td>
+                <td>'.$item['username'].'</td>
+                <td>'.$item['name'].'</td>
+                <td>'.$item['address'].'</td>
+                <td>'.$item['SDT'].'</td>
+                <td>'.$item['email'].'</td>
+                <td>'.$item['password'].'</td>
+                <td>User</td>
+                <td>
+                <a href="index.php?act=updateuser&id='.$item['id'].'"><button class="btn btn-warning">Sửa</button></a>
+                </td>
+                <td>
+                <a href="index.php?act=deleteuser&id='.$item['id'].'"><button class="btn btn-danger">Xóa</button></a>
+                </td>
+            </tr>';
+    } else if($item['role'] == '1'){
+        echo '
+            <tr>
+                <td>'.(++$firstIndex).'</td>
+                <td>'.$item['username'].'</td>
+                <td>'.$item['name'].'</td>
+                <td>'.$item['address'].'</td>
+                <td>'.$item['SDT'].'</td>
+                <td>'.$item['email'].'</td>
+                <td>'.$item['password'].'</td>
+                <td>Admin</td>
+                <td>
+                <a href="index.php?act=updateuser&id='.$item['id'].'"><button class="btn btn-warning">Sửa</button></a>
+                </td>
+                <td>
+                <a href="index.php?act=deleteuser&id='.$item['id'].'"><button class="btn btn-danger">Xóa</button></a>
+                </td>
+            </tr>';
     }
+    
 }
-
 ?>
                     </tbody>
                 </table>
+                
                 <?=paginarion($number, $page, '&search='.$search, $act)?>
             </div>
 		</div>
 	</div>
 
+
+        
+    </script>
 </body>
 </html>
