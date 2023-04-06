@@ -1,6 +1,5 @@
 <?php
     
-    include("./danhmuc/danhmuc.php");
-
+    header('Location: ?act=danhmuc');
 
 ?>

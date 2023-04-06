@@ -22,74 +22,67 @@
 			</div>
 			<div class="panel-body">
            
-                <form action="index.php?act=addOrders" method="post">
+                <form action="index.php?act=addcart" method="post">
                     <div class="form-group">
-                        <label for="id"></label>
+                        <label for="id_user"></label>
                         <input type="text" name="id" id="id" value="" hidden="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Khách Hàng</label>
+                        <input required="true" type="text" class="form-control" id="name" name="name" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Địa Chỉ</label>
+                        <input required="true" type="text" class="form-control" id="address" name="address" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="tel">SĐT:</label>
+                        <input required="true" type="text" class="form-control" id="tel" name="tel" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="hinhthucthanhtoan">Hình Thức Thanh Toán</label>
+                        <select class="form-control" name="hinhthucthanhtoan" id="hinhthucthanhtoan">
+                            <option value="">-- Lựa chọn hình thức thanh toán --</option>
+                            <option value="0">Tiền mặt</option>
+                            <option value="1">Chuyển khoản</option>
+                            <option value="2">Ví điện tử</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="trangthaithanhtoan">Trạng Thái Thanh Toán</label>
+                        <select class="form-control" name="trangthaithanhtoan" id="trangthaithanhtoan">
+                            <option value="">-- Lựa chọn trạng thái thanh toán --</option>
+                            <option value="0">Chưa thanh toán</option>
+                            <option value="1">Đang xử lý</option>
+                            <option value="2">Đã thanh toán</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="trangthai">Trạng Thái</label>
+                        <select class="form-control" name="trangthai" id="trangthai">
+                            <option value="">-- Lựa chọn trạng thái --</option>
+                            <option value="0">Chưa giao hàng</option>
+                            <option value="1">Đang giao hàng</option>
+                            <option value="2">Đã giao</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_product">Ghi Chú</label>
+                        <input required="true" type="text" class="form-control" id="id_product" name="id_product" value="">
                     </div>
                     <div class="form-group">
                         <label for="id_product">ID sản phẩm</label>
                         <input required="true" type="text" class="form-control" id="id_product" name="id_product" value="">
                     </div>
                     <div class="form-group">
-                        <label for="id_user">ID khách hàng</label>
-                        <input required="true" type="text" class="form-control" id="id_user" name="id_user" value="">
+                        <label for="id_product">Số Lượng</label>
+                        <input required="true" type="text" class="form-control" id="id_product" name="id_product" value="">
                     </div>
                     <div class="form-group">
-                        <label for="noigiao">Nơi giao đơn hàng</label>
-                        <input required="true" type="text" class="form-control" id="noigiao" name="noigiao" value="">
+                        <label for="total">Tổng tiền</label>
+                        <input required="true" type="text" class="form-control" id="total" name="total" value="">
                     </div>
-                    <div class="form-group">
-                        <label for="price">Tổng thành tiền</label>
-                        <input required="true" type="text" class="form-control" id="price" name="price" value="">
-                    </div>
-                    <div class="form-group">
-                        <label for="hinhthucthanhtoan">Chọn hình thức thanh toán</label>
-                        <select class="form-control" name="hinhthucthanhtoan" id="hinhthucthanhtoan">
-                            <option value="">--Lựa chọn hình thức thanh toán --</option>        
- <?php
-    
-        echo '<option value ="0">Thanh toán khi nhận hàng</option>
-        <option value ="1">Thanh toán qua tài khoản ngân hàng</option>
-        <option value ="2">Thanh toán qua ví điện tử</option>
-        ';
-    
-?>
-    
-                        </select>
-                       
-                    </div>    
-                    <div class="form-group">
-                        <label for="trangthaithanhtoan">Chọn trạng thái thanh toán</label>
-                        <select class="form-control" name="trangthaithanhtoan" id="trangthaithanhtoan">
-                            <option value="">--Lựa chọn trạng thái thanh toán --</option>        
- <?php
-    
-        echo '<option  value ="0">Chưa thanh toán</option>
-        <option value ="1">Đang xử lý</option>
-        <option value ="2">Đã thanh toán</option>
-        ';
-
-?>
-    
-                        </select>
-                       
-                    </div>    
-                    <div class="form-group">
-                        <label for="trangthai">Chọn trạng thái đơn hàng</label>
-                        <select class="form-control" name="trangthai" id="trangthai">
-                            <option value="">--Lựa chọn trạng thái đơn hàng --</option>        
- <?php
-    
-        echo '<option value ="0">Đang xử lý</option>
-        <option value ="1">Đang giao</option>
-        <option value ="2">Đã giao thành công</option>
-        ';
-    
-?>
-    
-                        </select>
-                    </div>    
+                   
                         
                     <button class="btn btn-success" type="submit">Lưu</button>
                         

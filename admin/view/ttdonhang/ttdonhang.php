@@ -18,7 +18,7 @@
 	<div class="container">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h2 class="text-center">Quản Lý Đơn Hàng</h2>
+				<h2 class="text-center">Quản Lý TT Đơn Hàng</h2>
 			</div>
             <div class="panel-body">
                 <div class="row">
@@ -42,30 +42,49 @@
                         <tr>
                             <th width="50px">STT</th>
                             <th>Mã Đơn Hàng</th>
-                            <th>Hình Ảnh</th>
-                            <th>Tên SP</th>
-                            <th>Đơn Giá</th>
-                            <th>Số Lượng</th>
-                            <th>Thành Tiền</th>
-                           
+                            <th>Khách Hàng</th>
+                            <th>Nơi Giao</th>
+                            <th>SĐT</th>
+                            <th>Ngày Đặt</th>
+                            <th>Hình Thức <br> Thanh Toán</th>
+                            <th>Tổng Thành <br> Tiền</th>
+                            <th>Trạng Thái <br> Thanh Toán</th>
+                            <th>Trạng Thái</th>
+                            <th>Ghi chú</th>
                             <th colspan="2">Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
 <?php 
 
-foreach ($cartList as $item){
+foreach ($ordersList as $item){
     echo '
     <tr>
         <td>'.(++$firstIndex).'</td>
-        <td>'.$item['id_bill'].'</td>
-        <td style="text-align: center;"><img src="'.$item['thumbnail'].'" style="max-width: 100px;"></td>
-        <td>'.$item['title'].'</td>
-        <td>'.$item['price'].'</td>
-        <td>'.$item['soluong'].'</td>
-        <td>'.$item['total'].'</td>';
+        <td>'.$item['id'].'</td>
+        <td>'.$item['name'].'</td>
+        <td>'.$item['address'].'</td>
+        <td>'.$item['tel'].'</td>
+        <td>'.$item['ngaydat'].'</td>';
+
+    if($item['hinhthucthanhtoan'] == '0') echo '<td>Thanh toán khi nhận hàng</td>';
+    else if($item['hinhthucthanhtoan'] == '1') echo '<td>Thanh toán qua tài khoản ngân hàng</td>';
+    else if($item['hinhthucthanhtoan'] == '2') echo '<td>Thanh toán bằng ví điện tử<td>';
+
+    echo '<td>'.$item['tongtien'].'</td>';
+        
+    if($item['trangthaithanhtoan'] == '0') echo '<td>Chưa thanh toán</td>';
+    else if($item['trangthaithanhtoan'] == '1') echo '<td>Đang xử lý</td>';
+    else if($item['trangthaithanhtoan'] == '2') echo '<td>Đã thanh toán<td>';
+
+    
+    if($item['trangthai'] == '0') echo '<td>Đã xác nhận đơn hàng</td>';
+    else if($item['trangthai'] == '1') echo '<td>Đang giao</td>';
+    else if($item['trangthai'] == '2') echo '<td>Đã giao thành công</td>';
+
 
     echo '
+         <td>'.$item['note'].'</td>
         <td>
             <a href="index.php?act=updatecart&id='.$item['id'].'"><button class="btn btn-warning">Sửa</button></a>
         </td>

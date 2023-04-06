@@ -8,7 +8,7 @@
         $stmt = $conn->prepare("SELECT * FROM category");
         $stmt->execute();
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-       $kq = $stmt->fetchAll();
+        $kq = $stmt->fetchAll();
         return $kq;
     }
 

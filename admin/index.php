@@ -6,9 +6,9 @@
     include("./model/sanpham.php");
     include("./model/nguoidung.php");
     include("./model/donhang.php");
+    include("./model/ttdonhang.php");
     include("./common/header.php");
     include("./common/utility.php");
-
     if(isset($_GET['act'])){
         switch ($_GET['act']){
     // category
@@ -193,57 +193,120 @@
             die(); 
         break;
 
-        //orders
+        //cart
         case 'donhang':
             // nhan yeu cau va xu ly
             // lay ds danh muc sp
-            $kq=getall_orders();
+            $kq=getall_cart();
             include "./view/donhang/donhang.php";
         break;
         
-        case 'updateOrders':   
+        case 'updatecart':   
             if(isset($_GET['id'])){
                 $id =$_GET['id'];
-                $kqone = getoneOrders($id);
-                $kq=getall_orders();
+                $kqone = getonecart($id);
+                $kq=getall_cart();
                 include "./view/donhang/updatedonhang.php";
             }
             if(isset($_POST['id'])){
                 $id_product = $_POST['id_product'];
-                $id_user = $_POST['id_user'];
                 $id = $_POST['id'];
-                $noigiao = $_POST['noigiao'];
-                $hinhthucthanhtoan = $_POST['hinhthucthanhtoan'];
-                $trangthaithanhtoan = $_POST['trangthaithanhtoan'];
-                $trangthai = $_POST['trangthai'];
-                $price = $_POST['price'];
+                $soluong = $_POST['soluong'];
+                $total = $_POST['total'];
                 $updated_at = date('Y-m-d H:s:i');
-                updateorders($id, $id_user, $id_product, $noigiao, $hinhthucthanhtoan, $trangthaithanhtoan, $trangthai ,$updated_at);
-                $kq=getall_orders();
+                updatecart($id, $id_product, $soluong, $total ,$updated_at);
+                $kq=getall_cart();
                 header('Location: index.php?act=donhang'); 
                 die(); 
             }
         break;
 
-        case 'addOrders':   
-            $kq=getall_orders();
+        case 'addcart':   
+            $kq=getall_cart();
             if(isset($_POST['id'])&&($_POST['id'])){
                 $id_product = $_POST['id_product'];
-                $id_user = $_POST['id_user'];
                 $id = $_POST['id'];
-                $noigiao = $_POST['noigiao'];
+                $id_bill = '2';
+                
+                $id_user = $_POST['id_user'];
+                $name = $_POST['name'];
+                $tongtien = $_POST['tongtien'];
+                $address = $_POST['address'];
+                $tel = $_POST['tel'];
                 $hinhthucthanhtoan = $_POST['hinhthucthanhtoan'];
                 $trangthaithanhtoan = $_POST['trangthaithanhtoan'];
                 $trangthai = $_POST['trangthai'];
-                $price = $_POST['price'];
+
+                $soluong = $_POST['soluong'];
+                $total = $_POST['total'];
                 $updated_at = date('Y-m-d H:s:i');
                 $created_at = date('Y-m-d H:s:i');
-                addorders($id, $id_user, $id_product, $noigiao, $hinhthucthanhtoan, $trangthaithanhtoan, $trangthai ,$created_at, $updated_at); 
+                addcart($id_product, $soluong, $total,$created_at, $updated_at); 
+                addorders($id_user, $name, $tongtien, $address, $tel, $ngaydat, $hinhthucthanhtoan, $trangthaithanhtoan, $trangthai, $note ,$created_at,$updated_at); 
                 header('Location: index.php?act=donhang'); 
                 die(); 
             } 
             if(!isset($_POST['id'])){     
                 include "./view/donhang/adddonhang.php";
+            }
+
+        break;
+    
+
+        //cart
+        case 'ttdonhang':
+            // nhan yeu cau va xu ly
+            // lay ds danh muc sp
+            $kq=getall_cart();
+            include "./view/ttdonhang/ttdonhang.php";
+        break;
+        
+        case 'updateorders':   
+            if(isset($_GET['id'])){
+                $id =$_GET['id'];
+                $kqone = getoneorders($id);
+                $kq=getall_orders();
+                include "./view/ttdonhang/updatettdonhang.php";
+            }
+            if(isset($_POST['id'])){
+                $id = $_POST['id']; 
+                $id_user = $_POST['id_user'];
+                $name = $_POST['name'];
+                $tongtien = $_POST['tongtien'];
+                $address = $_POST['address'];
+                $tel = $_POST['tel'];
+                $hinhthucthanhtoan = $_POST['hinhthucthanhtoan'];
+                $trangthaithanhtoan = $_POST['trangthaithanhtoan'];
+                $trangthai = $_POST['trangthai'];
+                $updated_at = $ngaydat = date('Y-m-d H:s:i');
+                updateorders($id, $id_user, $name, $tongtien, $address, $tel, $ngaydat, $hinhthucthanhtoan, $trangthaithanhtoan, $trangthai, $note ,$updated_at);
+                $kq=getall_orders();
+                header('Location: index.php?act=ttdonhang'); 
+                die(); 
+            }
+        break;
+
+        case 'addorders':   
+            $kq=getall_orders();
+            if(isset($_POST['id'])&&($_POST['id'])){
+                $id = $_POST['id']; 
+                $id_user = $_POST['id_user'];
+                $name = $_POST['name'];
+                $tongtien = $_POST['tongtien'];
+                $address = $_POST['address'];
+                $tel = $_POST['tel'];
+                $hinhthucthanhtoan = $_POST['hinhthucthanhtoan'];
+                $trangthaithanhtoan = $_POST['trangthaithanhtoan'];
+                $trangthai = $_POST['trangthai'];
+                $ngaydat = date('Y-m-d H:s:i');
+                $updated_at = date('Y-m-d H:s:i');
+                $created_at = date('Y-m-d H:s:i');
+                addorders($id, $id_user, $name, $tongtien, $address, $tel, $ngaydat, $hinhthucthanhtoan, $trangthaithanhtoan, $trangthai, $note ,$created_at,$updated_at); 
+                header('Location: index.php?act=ttdonhang'); 
+                die(); 
+            } 
+            if(!isset($_POST['id'])){     
+                include "./view/ttdonhang/addttdonhang.php";
             }
 
         break;
