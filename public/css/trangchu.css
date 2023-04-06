@@ -1,0 +1,130 @@
+
+.cake_feature_inner {
+    padding: 80px 0px 100px 0px;
+  }
+
+  .cake_feature_item {
+    background: #fff;
+    overflow: hidden;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(40, 40, 40, 0.08);
+    box-shadow: 0px 0px 15px 0px rgba(40, 40, 40, 0.08);
+    text-align: center;
+    padding-bottom: 30px;
+  }
+
+  .cake_feature_item .cake_img {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  
+  .cake_feature_item .cake_img img {
+    -webkit-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+  }
+  
+  .cake_feature_item .cake_img:before {
+    content: "";
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    -webkit-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+    z-index: 1;
+    opacity: 0;
+  }
+  
+  .cake_feature_item .cake_img:hover img {
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+  
+  .cake_feature_item .cake_img:hover:before {
+    opacity: 1;
+  }
+  
+  .cake_feature_item .cake_text {
+    position: relative;
+  }
+  
+  .cake_feature_item .cake_text h4 {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    color: #343434;
+    font-size: 26px;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    background: #fff;
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    top: -35px;
+    line-height: 68px;
+    margin-bottom: 0px;
+    z-index: 2;
+  }
+  
+  .cake_feature_item .cake_text h3 {
+    font-size: 18px;
+    color: #343434;
+    font-family: "Playfair Display", serif;
+    margin-bottom: 22px;
+    padding-top: 35px;
+  }
+  
+  .others {
+    flex: 1;
+    display: flex;
+}
+.others > li {
+    padding:0 12px;
+    position: relative;
+}
+.others > li::after{
+    content:"";
+    display: block;
+    width: 1px; 
+    height: 80%;
+    background: #dddddd;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.others li:last-child:after{
+    display: none;
+}
+.others > li:first-child {
+    position: relative;
+}
+.others > li:first-child input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #333;
+    background: transparent;
+    outline: none;
+}
+.others > li:first-child i {
+    position: absolute;
+    right: 10px
+}
+
+.sizeicon{
+    font-size: 30px;
+}
+
+a.border.rounded-sm{
+    padding-right: 5px;
+}

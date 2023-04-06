@@ -1,3 +1,7 @@
+<?php
+    echo "Bai1"
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

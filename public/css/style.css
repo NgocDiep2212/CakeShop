@@ -1,0 +1,64 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+	color: #333;
+}
+
+header {
+	background-color: #ff6600;
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+}
+
+.logo-container {
+	float: left;
+	padding: 10px;
+}
+
+.navigation-container {
+	float: right;
+}
+
+nav ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+nav ul li {
+	float: left;
+	margin-right: 10px;
+}
+
+nav ul li a {
+	display: inline-block;
+	padding: 10px;
+	color: white;
+	text-decoration: none;
+	transition: color 0.2s;
+}
+
+nav ul li a:hover {
+	color: #ecd6b0;
+}
+
+.banner {
+	background-image: url("https://content.api.news/v3/images/bin/859ab640b31befd5ade828ca40497b4c");
+	background-position: center center;
+	background-size: cover;
+	height: 500px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+
