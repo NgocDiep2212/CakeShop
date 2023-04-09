@@ -1,5 +1,3 @@
-<!-- cart.php -->
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,87 +64,67 @@
 			</nav>
 		</div>
 	</header>
-<body>
-	<br><hr>
-	<h1 class="nav justify-content-center font-weight-bold text-warning ">Shopping Cart</h1>
-<br>
-	<div class="cart container">
-		<table class="table table-hover">
-			<tr>
-				
-				<th>Tên Sản Phẩm</th>
-				<th>Giá</th>
-				<th>Số Lượng</th>
-				<th>Tổng Cộng</th>
-				<th>Action</th>
-			</tr>
+        
+		<section class="contact product_area p_100">
+			<div class="container">
+            <div class="main_title">
+                <h1 class="nav justify-content-center font-weight-bolder font-italic text-warning ">Liên hệ với chúng tôi</h1>
+        	</div>
+            <div class="row ">
+            
+            <div class="col-lg-7  bg-white">
+				<br>
+                     <?php if (isset($error_message)): ?>
+                        <div class="alert-danger"><?php echo $error_message; ?></div>
+                    <?php endif; ?>
+                    <form class="row contact_us_form" method="post">
+						<div class="form-group col-md-6">
+							<label for="name">Họ tên:</label>
+                        	<input class="form-control border border-dark"type="text" id="name" name="name" placeholder="Tên bạn" value="<?php echo isset($name) ? $name : ''; ?>" required>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="email">Email:</label>
+                        	<input class="form-control border border-dark" type="email" id="email" name="email" placeholder="Email của bạn" value="<?php echo isset($email) ? $email : ''; ?>" required>
+						</div>
+						<div class="form-group col-md-12">
+							 <label for="message">Nội dung tin nhắn:</label>
+                        	<textarea class="form-control border border-dark" id="message" name="message" placeholder="Nội dung . ." required><?php echo isset($message) ? $message : ''; ?></textarea>
+						</div>
+						<div class="form-group col-md-12">
+							<button type="submit" value="submit" class="btn order_s_btn form-control">Gửi</button>
+						</div>
+                        	
+                    </form>
+					
+                </div>
+            
+			<div class="col-lg-4 offset-md-1">
+       			    <div class="contact_details ">
+       						<div class="contact_d_item">
+       							<h3>Địa chỉ :</h3>
+       							<p> Đường 3/2 <br /> P.Xuân Khánh, Q.Ninh Kiều ,TP.Cần Thơ</p>
+       						</div>
+       						<div class="contact_d_item">
+       							<h5>Điện thoại : <a href="tel:000000000">000-000-0000</a></h5>
+       							<h5>Email : bakery@gmail.com</h5>
+       						</div>
+       						<div class="contact_d_item">
+       							<h3>Giờ hoạt động :</h3>
+       							<p>8:00 AM – 9:00 PM</p>
+       							<p>Thứ 2 – Thứ 6</p>
+								<p>Thứ 7 : 9:00AM - 4:00PM</p>
+       						</div>
+							<div>
+							<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4409.9910675426745!2d105.76940472586078!3d10.028834546680287!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a0895a51d60719%3A0x9d76b0035f6d53d0!2zxJDhuqFpIGjhu41jIEPhuqduIFRoxqE!5e0!3m2!1svi!2s!4v1680967622095!5m2!1svi!2s" width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+							</div>
+       					</div>
+       				</div>
+				</div>
+			</div>
+		</section>
+		
 
-			<?php
-				// Thực hiện kết nối tới cơ sở dữ liệu
-				$conn = mysqli_connect("localhost", "root", "", "ct275_baocao");
-
-				// Kiểm tra nếu có id sản phẩm được truyền vào 
-			  if(isset($_GET['id'])) {
-			  	// Lấy id sản phẩm và số lượng hiện có trong giỏ hàng
-			  	$id = $_GET['id'];
-			  	$quantity = 1;
-
-				  // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
-				  if(isset($_SESSION['cart'][$id])) {
-					  // Nếu có rồi thì tăng số lượng sản phẩm thêm 1
-					  $quantity += $_SESSION['cart'][$id];
-				  }
-
-				  // Thêm sản phẩm vào giỏ hàng
-				  $_SESSION['cart'][$id] = $quantity;
-			  }
-
-				// Nếu giỏ hàng khác rỗng thì hiển thị các sản phẩm trong giỏ hàng
-				if(!empty($_SESSION['cart'])) {
-					$cart_total = 0;
-
-					foreach($_SESSION['cart'] as $id => $quantity) {
-						// Truy vấn để lấy thông tin sản phẩm trong bảng products
-						$sql = "SELECT * FROM products WHERE id = $id";
-						$result = mysqli_query($conn, $sql);
-
-						if(mysqli_num_rows($result) > 0) {
-							$row = mysqli_fetch_assoc($result);
-
-							$subtotal = $row['price'] * $quantity;
-							$cart_total += $subtotal;
-						foreach($result as $result){ 
-							
-							echo "<tr>";
-							echo "<td>" . $row['title'] . "</td>";
-							echo "<td>" . $row['price'] . "đ</td>";
-							echo "<td>" . $quantity . "</td>";
-							echo "<td>" . $subtotal . "đ</td>";
-							echo "<td><a href=\"remove.php?id=" . $id . "\">Xóa</a></td>";
-							echo "</tr>";
-						}
-						}
-					}
-
-					echo "<tr><td colspan=\"3\">Total:</td><td>$" . $cart_total . "</td><td></td></tr>";
-				} else {
-					echo "<tr><td colspan=\"5\">Your shopping cart is empty.</td></tr>";
-				}
-
-				// Đóng kết nối
-				mysqli_close($conn);
-			?>
-		</table>
-
-		<div class="checkout navbar navbar-expand-sm">
-			<ul class="navbar  nav">
-				<a href="index.php" class="btn btn-warning text-white  btn-lg-3">Quay Về Trang Chủ</a>
-				<a href="product.php" class="btn btn-warning text-white  btn-lg-3">Tiếp tục mua</a>
-			</ul>
-			
-		</div>
-	</div><br><hr>
-	<footer id="contact" class="bg-img-90 " style="background-image:url('https://content.api.news/v3/images/bin/859ab640b31befd5ade828ca40497b4c');box-shadow: inset 0px 0px 400px 210px rgba(0, 0, 0, .7);height: 400px">
+		<footer id="contact" class="bg-img-90 " style="background-image:url('https://content.api.news/v3/images/bin/859ab640b31befd5ade828ca40497b4c');box-shadow: inset 0px 0px 400px 210px rgba(0, 0, 0, .7);height: 400px">
 		<div class="navbar-brand  font-weight-bold text-white">
 			<h2 class="font-weight-bolder" >Contact Us</h2>
 		</div>
@@ -213,5 +191,6 @@
 		</div>
 		</div>
 	</footer>
-</body>
+    </body>
+
 </html>

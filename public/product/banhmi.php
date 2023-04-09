@@ -1,11 +1,7 @@
-<!-- cart.php -->
-
-<!DOCTYPE html>
-<html>
 <head>
 	<title>Bakery Shop</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="stylesheet" href="css/trangchustyle.css">
+	<link rel="stylesheet" href="../css/trangchustyle.css">
 	<link rel="stylesheet" href="css/trangchu.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -43,11 +39,11 @@
 			<div class="p_search col container">
 				<div class="mx-auto col p_search "><br>
 					<ul class=" navbar nav">
-						<li class="nav-item"><input  placeholder="Tìm kiếm" type="text">&nbsp<a class="fas fa-search text-white" href="index.php"></a> </li>
-						<li class="nav-item"><a class=" fa fa-building nav-link rounded-sm bg-white font-weight-bolder" style="font-size:20px;color:#660000;"> Hệ Thống</a></li>
-						<li class="nav-item"><a class=" fa fa-user nav-link rounded-sm bg-white font-weight-bolder" style="font-size:20px;color:#660000;"> Tài Khoản</a></li>
-						<li class="nav-item"><a class=" fa fa-phone nav-link rounded-sm bg-white font-weight-bolder" style="font-size:20px;color:#660000;"> 000-000-0000</a></li>
-						<li class="nav-item"><a class=" fa fa-shopping-bag nav-link rounded-sm bg-white font-weight-bolder" style="font-size:20px;color:#660000;" href="cart.php"></a></li>
+						<li class="nav-item"><input  placeholder="Tìm kiếm" type="text"><a class="fas fa-search text-dark" href="index.php"></a> </li>
+						<li class="nav-item"><a class=" fa fa-building nav-link rounded-sm bg-white" style="font-size:20px;color:#660000;"> Hệ Thống</a></li>
+						<li class="nav-item"><a class=" fa fa-user nav-link rounded-sm bg-white" style="font-size:20px;color:#660000;"> Tài Khoản</a></li>
+						<li class="nav-item"><a class=" fa fa-phone nav-link rounded-sm bg-white" style="font-size:20px;color:#660000;"> 000-000-0000</a></li>
+						<li class="nav-item"><a class=" fa fa-shopping-bag nav-link rounded-sm bg-white" style="font-size:20px;color:#660000;" href="../cart.php"></a></li>
 					</ul>
 						</div>
 				
@@ -58,94 +54,89 @@
 		<div class="navigation-container container">
 			<nav class="navbar navbar-expand-sm font-weight-bolder">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link text-white" href="index.php">TRANG CHỦ</a></li>
-					<li class="nav-item"><a class="nav-link text-white" href="product.php">SẢN PHẨM</a></li>
-					<li class="nav-item"><a class="nav-link text-white" href="about_us.php">VỀ CHÚNG TÔI</a></li>
-					<li class="nav-item"><a class="nav-link text-white" href="contact.php">LIÊN HỆ</a></li>
+					<li class="nav-item"><a class="nav-link text-white" href="../index.php">TRANG CHỦ</a></li>
+					<li class="nav-item"><a class="nav-link text-white" href="../product.php">SẢN PHẨM</a></li>
+					<li class="nav-item"><a class="nav-link text-white" href="../about_us.php">VỀ CHÚNG TÔI</a></li>
+					<li class="nav-item"><a class="nav-link text-white" href="../contact.php">LIÊN HỆ</a></li>
 				</ul>
 			</nav>
 		</div>
 	</header>
-<body>
-	<br><hr>
-	<h1 class="nav justify-content-center font-weight-bold text-warning ">Shopping Cart</h1>
-<br>
-	<div class="cart container">
-		<table class="table table-hover">
-			<tr>
-				
-				<th>Tên Sản Phẩm</th>
-				<th>Giá</th>
-				<th>Số Lượng</th>
-				<th>Tổng Cộng</th>
-				<th>Action</th>
-			</tr>
+	<br>
+	<div class="promotion_bakery_area main_title">
+		<div>
+			<h1 class="d-flex justify-content-center font-weight-bold text-warning ">MENU</h1>
+            <h3 class="container d-flex justify-content-center font-weight-bold main_title">Bánh mì</h3>
+		</div>
+			
+	</div>
+	<section class="main_title">
+	<div class="container bg-white">
+	<br>
+	<div class="row product_inner_row">
+		
+		<div class="col-lg-9">
+			<div class="products-container  row ">
+					<?php
+						// Thực hiện kết nối tới cơ sở dữ liệu
+						$conn = mysqli_connect("localhost", "root", "", "ct275_baocao");
 
-			<?php
-				// Thực hiện kết nối tới cơ sở dữ liệu
-				$conn = mysqli_connect("localhost", "root", "", "ct275_baocao");
-
-				// Kiểm tra nếu có id sản phẩm được truyền vào 
-			  if(isset($_GET['id'])) {
-			  	// Lấy id sản phẩm và số lượng hiện có trong giỏ hàng
-			  	$id = $_GET['id'];
-			  	$quantity = 1;
-
-				  // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
-				  if(isset($_SESSION['cart'][$id])) {
-					  // Nếu có rồi thì tăng số lượng sản phẩm thêm 1
-					  $quantity += $_SESSION['cart'][$id];
-				  }
-
-				  // Thêm sản phẩm vào giỏ hàng
-				  $_SESSION['cart'][$id] = $quantity;
-			  }
-
-				// Nếu giỏ hàng khác rỗng thì hiển thị các sản phẩm trong giỏ hàng
-				if(!empty($_SESSION['cart'])) {
-					$cart_total = 0;
-
-					foreach($_SESSION['cart'] as $id => $quantity) {
-						// Truy vấn để lấy thông tin sản phẩm trong bảng products
-						$sql = "SELECT * FROM products WHERE id = $id";
+						// Truy vấn để lấy tất cả sản phẩm từ bảng products
+						$sql = "SELECT * FROM products";
 						$result = mysqli_query($conn, $sql);
 
-						if(mysqli_num_rows($result) > 0) {
-							$row = mysqli_fetch_assoc($result);
-
-							$subtotal = $row['price'] * $quantity;
-							$cart_total += $subtotal;
-						foreach($result as $result){ 
-							
-							echo "<tr>";
-							echo "<td>" . $row['title'] . "</td>";
-							echo "<td>" . $row['price'] . "đ</td>";
-							echo "<td>" . $quantity . "</td>";
-							echo "<td>" . $subtotal . "đ</td>";
-							echo "<td><a href=\"remove.php?id=" . $id . "\">Xóa</a></td>";
-							echo "</tr>";
+						// Hiển thị sản phẩm lên trang web
+						if (mysqli_num_rows($result) > 0 ) {
+							while($row = mysqli_fetch_assoc($result) ) {
+                                if($row['id_category'] =='2'){
+                                    echo '<div class="item col-lg-4"><br>';
+                                    echo 	'<div class="cake_feature_item ">';
+                                    echo 		'<div class="cake_img ">';
+                                    echo 			'<img src="'. $row['thumbnail'] .'" alt="'. $row['title'] .'" width="250px">';
+                                    echo 		'</div>';
+                                    echo 		'<div class="cake_text">';
+                                    echo 			'<h4>'. $row['price'] .'</h4>';
+                                    echo 			'<h3>'. $row['title'] .'</h3><br>';
+                                    echo 			'<a href="cart.php?id=' . $row['id'] . '">Thêm vào giỏ hàng</a>';
+                                    echo 		'</div>';
+                                    echo 	'</div>';
+                                    echo '</div>';
+                                }
+                                else continue;
+							}
+						} else {
+							echo "<p>No products found.</p>";
 						}
-						}
-					}
 
-					echo "<tr><td colspan=\"3\">Total:</td><td>$" . $cart_total . "</td><td></td></tr>";
-				} else {
-					echo "<tr><td colspan=\"5\">Your shopping cart is empty.</td></tr>";
-				}
-
-				// Đóng kết nối
-				mysqli_close($conn);
-			?>
-		</table>
-
-		<div class="checkout navbar navbar-expand-sm">
-			<ul class="navbar  nav">
-				<a href="index.php" class="btn btn-warning text-white  btn-lg-3">Quay Về Trang Chủ</a>
-				<a href="product.php" class="btn btn-warning text-white  btn-lg-3">Tiếp tục mua</a>
-			</ul>
-			
+						// Đóng kết nối
+						mysqli_close($conn);
+					?>
+					
+				</div>
 		</div>
-	</div><br><hr>
+		<div class="col-lg-3">
+		<aside class="left_sidebar p_catgories_widget">
+            <div class="p_w_title ">
+				<h3 class="font-weight-bolder font-italic">Danh Mục Menu</h3>
+			</div>
+			<div>
+				<ul class="navbar-nav list_style">
+					<li><a href="banhngot.php">Bánh Sinh Nhật</a></li>
+					<li><a href="banhmi.php">Bánh Mì</a></li>
+					<li><a href="banhman.php">Bánh Mặn</a></li>
+					<li><a href="cookie.php">Cookie</a></li>
+					<li><a href="minicake.php">Minicake</a></li>
+				</ul>
+			</div>
+		</aside>
+		</div>
+	</div>
+</div>
+	</section>
+    <div class="container">
+        <a href="../index.php" class="btn btn-warning text-white  btn-lg-3 ">Về Trang Chủ</a>
+    </div><br>
+	
 	<footer id="contact" class="bg-img-90 " style="background-image:url('https://content.api.news/v3/images/bin/859ab640b31befd5ade828ca40497b4c');box-shadow: inset 0px 0px 400px 210px rgba(0, 0, 0, .7);height: 400px">
 		<div class="navbar-brand  font-weight-bold text-white">
 			<h2 class="font-weight-bolder" >Contact Us</h2>

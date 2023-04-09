@@ -128,3 +128,34 @@
 a.border.rounded-sm{
     padding-right: 5px;
 }
+
+.picsize{
+    width: 50px;
+    
+}
+
+body{
+   background-color: #FFFFCC; 
+  }
+
+.wap-ss-img{ 
+  text-align: center;width: 100%; 
+}
+.wap-ss-img img{
+   height: 250px;margin: 0 auto;
+ }
+.textleft{
+   text-align: center; 
+  }
+.slick-prev:before, .slick-next:before{
+       font-family: fontawesome;
+       font-size: 30px;
+       color: #110000;
+}
+.slick-prev:before{
+       content:'\f100';
+}
+.slick-next:before{
+       content:'\f101';
+}
+
