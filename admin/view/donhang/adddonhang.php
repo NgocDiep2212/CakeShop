@@ -28,8 +28,8 @@
                         <input type="text" name="id" id="id" value="" hidden="true">
                     </div>
                     <div class="form-group">
-                        <label for="name">Khách Hàng</label>
-                        <input required="true" type="text" class="form-control" id="name" name="name" value="">
+                        <label for="id_user">ID Khách Hàng</label>
+                        <input required="true" type="text" class="form-control" id="id_user" name="id_user" value="">
                     </div>
                     <div class="form-group">
                         <label for="address">Địa Chỉ</label>
@@ -67,8 +67,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="id_product">Ghi Chú</label>
-                        <input required="true" type="text" class="form-control" id="id_product" name="id_product" value="">
+                        <label for="note">Ghi Chú</label>
+                        <input required="true" type="text" class="form-control" id="note" name="note" value="">
                     </div>
                     <div class="form-group">
                         <label for="id_product">ID sản phẩm</label>

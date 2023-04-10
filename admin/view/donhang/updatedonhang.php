@@ -32,100 +32,14 @@
                         <input required="true" type="text" class="form-control" id="id_product" name="id_product" value="<?=$kqone[0]['id_product']?>">
                     </div>
                     <div class="form-group">
-                        <label for="id_user">ID khách hàng</label>
-                        <input required="true" type="text" class="form-control" id="id_user" name="id_user" value="<?=$kqone[0]['id_user']?>">
+                        <label for="soluong">Số lượng</label>
+                        <input required="true" type="text" class="form-control" id="soluong" name="soluong" value="<?=$kqone[0]['soluong']?>">
                     </div>
                     <div class="form-group">
-                        <label for="noigiao">Nơi giao đơn hàng</label>
-                        <input required="true" type="text" class="form-control" id="noigiao" name="noigiao" value="<?=$kqone[0]['noigiao']?>">
+                        <label for="total">Thành tiền</label>
+                        <input required="true" type="text" class="form-control" id="total" name="total" value="<?=$kqone[0]['total']?>">
                     </div>
-                    <div class="form-group">
-                        <label for="price">Tổng thành tiền</label>
-                        <input required="true" type="text" class="form-control" id="price" name="price" value="<?=$kqone[0]['price']?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="hinhthucthanhtoan">Chọn hình thức thanh toán</label>
-                        <select class="form-control" name="hinhthucthanhtoan" id="hinhthucthanhtoan">
-                            <option value="">--Lựa chọn hình thức thanh toán --</option>        
- <?php
-    if( $kqone[0]['hinhthucthanhtoan'] == '0'){
-        echo '<option selected value ="0">Thanh toán khi nhận hàng</option>
-        <option value ="1">Thanh toán qua tài khoản ngân hàng</option>
-        <option value ="2">Thanh toán qua ví điện tử</option>
-        ';
-    }
-    else if($kqone[0]['hinhthucthanhtoan'] == '1'){
-        echo '<option value ="0">Thanh toán khi nhận hàng</option>
-        <option selected value ="1">Thanh toán qua tài khoản ngân hàng</option>
-        <option value ="2">Thanh toán qua ví điện tử</option>
-        ';
-    }
-    else{
-        echo '<option value ="0">Thanh toán khi nhận hàng</option>
-        <option value ="1">Thanh toán qua tài khoản ngân hàng</option>
-        <option selected value ="2">Thanh toán qua ví điện tử</option>
-        ';
-    }
-?>
-    
-                        </select>
-                       
-                    </div>    
-                    <div class="form-group">
-                        <label for="trangthaithanhtoan">Chọn trạng thái thanh toán</label>
-                        <select class="form-control" name="trangthaithanhtoan" id="trangthaithanhtoan">
-                            <option value="">--Lựa chọn trạng thái thanh toán --</option>        
- <?php
-    if( $kqone[0]['trangthaithanhtoan'] == '0'){
-        echo '<option selected value ="0">Chưa thanh toán</option>
-        <option value ="1">Đang xử lý</option>
-        <option value ="2">Đã thanh toán</option>
-        ';
-    }
-    else if($kqone[0]['trangthaithanhtoan'] == '1'){
-        echo '<option value ="0">Chưa thanh toán</option>
-        <option selected value ="1">Đang xử lý</option>
-        <option value ="2">Đã thanh toán</option>
-        ';
-    }
-    else{
-        echo '<option value ="0">Chưa thanh toán</option>
-        <option value ="1">Đang xử lý</option>
-        <option selected value ="2">Đã thanh toán</option>
-        ';
-    }
-?>
-    
-                        </select>
-                       
-                    </div>    
-                    <div class="form-group">
-                        <label for="trangthai">Chọn trạng thái đơn hàng</label>
-                        <select class="form-control" name="trangthai" id="trangthai">
-                            <option value="">--Lựa chọn trạng thái đơn hàng --</option>        
- <?php
-    if( $kqone[0]['trangthai'] == '0'){
-        echo '<option selected value ="0">Đang xử lý</option>
-        <option value ="1">Đang giao</option>
-        <option value ="2">Đã giao thành công</option>
-        ';
-    }
-    else if($kqone[0]['trangthai'] == '1'){
-        echo '<option value ="0">Đang xử lý</option>
-        <option selected value ="1">Đang giao</option>
-        <option value ="2">Đã giao thành công</option>
-        ';
-    }
-    else{
-        echo '<option value ="0">Đang xử lý</option>
-        <option value ="1">Đang giao</option>
-        <option selected value ="2">Đã giao thành công</option>
-        ';
-    }
-?>
-    
-                        </select>
-                    </div>    
+                    
                         
                     <button class="btn btn-success" type="submit">Lưu</button>
                         
