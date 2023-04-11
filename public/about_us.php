@@ -102,7 +102,7 @@
             <div class="main_title">
                 <h4 class="font-weight-bolder">Tại sao không FREE SHIP?</h4>
                 <p>Phí giao hàng xe máy cố định 5000đ/1km (5 ngàn đồng trên một kilometer), phí sàn 15.000đ.</p>
-                <p>Đối với các bánh khổ lớn, bánh tầng cao giao bằng ô tô sẽ theo thỏa thuận 2 bên, tất nhiên MiaCake sẽ hỗ trợ thêm phí giao hoặc free với bánh khổ lớn.</p>
+                <p>Đối với các bánh khổ lớn, bánh tầng cao giao bằng ô tô sẽ theo thỏa thuận 2 bên, tất nhiên chúng tôi sẽ hỗ trợ thêm phí giao hoặc free với bánh khổ lớn.</p>
             </div>
             <br>
             <div class="">
@@ -141,7 +141,7 @@
 						<label class="text-white" for="message">Message:</label>
 						<textarea class="container" id="message" name="message" rows="4" required></textarea>
 						<br>
-						<button class="" type="submit">Send Message</button>
+						<button class="form-control" type="submit">Send Message</button>
 					</div>
 							
 								

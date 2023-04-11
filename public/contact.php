@@ -64,12 +64,13 @@
 			</nav>
 		</div>
 	</header>
-        
-		<section class="contact product_area p_100">
-			<div class="container">
-            <div class="main_title">
+	<br>
+        <div class="promotion_bakery_area">
                 <h1 class="nav justify-content-center font-weight-bolder font-italic text-warning ">Liên hệ với chúng tôi</h1>
         	</div>
+		<section class=" product_area p_100">
+			<div class="container">
+            
             <div class="row ">
             
             <div class="col-lg-7  bg-white">
@@ -152,7 +153,7 @@
 						<label class="text-white" for="message">Message:</label>
 						<textarea class="container" id="message" name="message" rows="4" required></textarea>
 						<br>
-						<button class="" type="submit">Send Message</button>
+						<button class="form-control" type="submit">Send Message</button>
 					</div>
 							
 								

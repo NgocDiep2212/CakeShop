@@ -97,7 +97,7 @@
                                     echo 		'<div class="cake_text">';
                                     echo 			'<h4>'. $row['price'] .'</h4>';
                                     echo 			'<h3>'. $row['title'] .'</h3><br>';
-                                    echo 			'<a href="cart.php?id=' . $row['id'] . '">Thêm vào giỏ hàng</a>';
+                                    echo 			'<a href="detail.php?id=' . $row['id'] . '">Xem thêm</a>';
                                     echo 		'</div>';
                                     echo 	'</div>';
                                     echo '</div>';
@@ -165,7 +165,7 @@
 						<label class="text-white" for="message">Message:</label>
 						<textarea class="container" id="message" name="message" rows="4" required></textarea>
 						<br>
-						<button class="" type="submit">Send Message</button>
+						<button class="form-control " type="submit">Send Message</button>
 					</div>
 							
 								

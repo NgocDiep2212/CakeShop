@@ -235,7 +235,7 @@
 						<label class="text-white" for="message">Message:</label>
 						<textarea class="container" id="message" name="message" rows="4" required></textarea>
 						<br>
-						<button class="" type="submit">Send Message</button>
+						<button class="form-control" type="submit">Send Message</button>
 					</div>
 							
 								
