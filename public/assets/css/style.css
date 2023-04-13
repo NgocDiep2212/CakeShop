@@ -1,0 +1,154 @@
+:root{
+	--primary-color: #660000;
+}
+
+.main{
+	background-color: #f8f2e8;
+}
+.category-list> h5{
+	text-align: center;
+	color: var(--primary-color);
+	font-weight: 700;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.item-wrapper{
+	border: 1px solid #848484;
+	border-radius: 20px;
+}
+
+img.card-img-top{
+	border-top-right-radius: 20px;
+	border-top-left-radius: 20px;
+}
+
+.card-body{
+	text-align: center;
+	background-color: #fff;
+	border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.box-title{
+	width: 100%;
+	color: #000;
+}
+
+.box-title:hover{
+	text-decoration: none;
+}
+
+.box-title:hover .card-title{
+	width: 100%;
+	color: var(--primary-color);
+}
+
+.card-title{
+	font-weight: bolder;
+	color: #000;
+	margin: 0;
+}
+
+.button-box{
+	display: flex;
+    justify-content: space-around;
+}
+
+.item-icon{
+	color: var(--primary-color);
+	font-size: 26px;
+}
+.item-icon:hover i{
+	color: #4b3535;
+}
+
+.btn-buy{
+	background-color: #c0c906;
+	padding: 10px 20px;
+    border: 1px solid var(--primary-color);
+    color: #fff;
+    border-radius: 40px;
+}
+
+a.more{
+	margin-bottom: 20px auto;
+}
+
+.btn-buy:hover{
+	color: #fff;
+	text-decoration: none;
+	background-color: var(--primary-color);
+}
+
+.item-wrapper{
+	margin-bottom: 26px;
+}
+
+.services-container{
+	display: flex;
+}
+
+.service{
+	cursor: pointer;
+	width: 30%;
+	padding: 20px;
+}
+.service:hover{
+	background-color: #bfc9063d;
+}
+
+.service-title{
+	margin: auto;
+	text-align: center;
+	width: 80%;
+}
+.service-img{
+	margin: auto;
+	width: 300px;
+}
+
+.service-img img{
+	width: 100%;
+}
+
+/* category */
+.menu{
+	margin: auto;
+	width: 400px;
+}
+
+.menu img{
+	width: 100%;
+}
+
+.img-menulist{
+	width: 300px;
+	position: relative;
+}
+
+.img-menulist > img{
+	width: 100%;
+}
+
+.menulist-category{
+	position: absolute;
+	top: 0;
+	left: 0;
+    margin-top: 120px;
+    margin-left: 70px;
+}
+
+.menulist-category li a{
+	color: #fff;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+.menulist-category li {
+	padding-bottom: 10px;
+}
+
+a.back-home{
+	border-radius: 20px;
+    padding: 10px 25px;
+}
